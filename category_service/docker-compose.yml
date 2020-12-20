@@ -1,0 +1,13 @@
+version: '2.3'
+
+services:
+  category_service:
+      image: service
+      build:
+        context: ./
+        dockerfile: Dockerfile
+        # restart: "always"
+      ports:
+        - 8810:8888
+      tty: true
+      stdin_open: true

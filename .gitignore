@@ -1,0 +1,9 @@
+/research_and_development/trained_model/category_multi_class_multi_label_name_description/
+/category_service/service/category_model/language_model.bin
+/category_service/service/category_model/language_model_config.json
+/category_service/service/category_model/prediction_head_0.bin
+/category_service/service/category_model/prediction_head_0_config.json
+/category_service/service/category_model/processor_config.json
+/category_service/service/category_model/special_tokens_map.json
+/category_service/service/category_model/tokenizer_config.json
+/category_service/service/category_model/vocab.txt

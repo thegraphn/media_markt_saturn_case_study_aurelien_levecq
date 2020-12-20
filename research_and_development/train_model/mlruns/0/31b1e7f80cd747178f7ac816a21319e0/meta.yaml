@@ -1,0 +1,15 @@
+artifact_uri: file:///home/graphn/PycharmProjects/media_markt_saturn_case_study_aurelien_levecq/train_model/mlruns/0/31b1e7f80cd747178f7ac816a21319e0/artifacts
+end_time: 1608036919396
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: 31b1e7f80cd747178f7ac816a21319e0
+run_uuid: 31b1e7f80cd747178f7ac816a21319e0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1608036900019
+status: 3
+tags: []
+user_id: graphn
