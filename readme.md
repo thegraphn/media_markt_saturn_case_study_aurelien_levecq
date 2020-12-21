@@ -18,7 +18,7 @@ To mimik Google Cloud Platform, I created a docker
  image container. The pseudo_pipeline is a tiny version of a pipeline Media Markt could have.
 In this pipeline it is possible to send requests to get the product's categories.
 
-The model reached 46% f1 macro on the dev data-set and XX% on the 
+The model reached 46% f1 macro on the dev data-set and 29% on the 
 test set. This value is very reasonable, given the size of the data-set 
 and the number of categories. The model used in the service can easily 
 be changed for a different model architecture with different pre- and 
