@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Predicted categories for a product
+Predict categories for a product
 """
 from typing import Dict
-
 from farm.infer import Inferencer
 
 
@@ -17,14 +16,11 @@ class CategoryPredictor:
 
     def run(self, name: str, short_description_text: str, short_description_mm_text: str, long_description_text: str,
             long_description_mn_text: str, marketing_text_mm_text: str) -> Dict[str, str]:
-        """
-        Entry point for predicting the product's categories
-        """
 
         input_text = self.pre_processing(name, short_description_text, short_description_mm_text, long_description_text,
                                          long_description_mn_text, marketing_text_mm_text)
-        scraped_items = {"predicted_categories": self.predict(input_text), "input_text": input_text}
-        return scraped_items
+
+        return {"predicted_categories": self.predict(input_text), "input_text": input_text}
 
     def predict(self, text: str) -> list:
         texts_to_be_predicted = [{"text": text}]

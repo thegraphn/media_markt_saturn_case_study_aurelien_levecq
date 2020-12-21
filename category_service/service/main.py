@@ -14,6 +14,7 @@ category_predictor = CategoryPredictor()
 @app.route("/api/inference", methods=["POST"])
 def predict_category():
     """
+    Entry point
     """
 
     if flask.request.method == 'POST':

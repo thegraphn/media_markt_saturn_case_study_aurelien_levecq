@@ -14,9 +14,7 @@ from farm.train import Trainer, EarlyStopping
 from farm.utils import set_all_seeds, MLFlowLogger, initialize_device_settings
 
 
-
 def doc_classification_multilabel():
-
     logging.basicConfig(
         format="%(asctime)s - %(levelname)s - %(name)s -   %(message)s",
         datefmt="%m/%d/%Y %H:%M:%S",
@@ -29,7 +27,7 @@ def doc_classification_multilabel():
     ##########################
     set_all_seeds(seed=42)
     device, n_gpu = initialize_device_settings(use_cuda=True)
-    n_epochs = 500
+    n_epochs = 200
     batch_size = 6
 
     evaluate_every = 114
@@ -41,18 +39,11 @@ def doc_classification_multilabel():
         pretrained_model_name_or_path=lang_model,
         do_lower_case=do_lower_case)
 
-    label_list = ['310', '259', '261', '300', '279', '224', '299', '249', '332', '247', '293', '297', '207', '326', '308', '298', '8022', '324', '342', '301', '294', '312', '210', '257', '788', '750', '252', '253', '749', '8021', '315', '262', '311', '319', '208', '233', '238', '231', '237', '322', '286', '296', '325', '303', '225', '223', '784', '305', '255', '295', '314', '263', '282', '250', '316', '331', '4561', '8024', '226', '284', '269', '235', '266', '278', '220', '291', '265', '307']
-
-
-
-
-
-
-
-
-
-
-
+    label_list = ['310', '259', '261', '300', '279', '224', '299', '249', '332', '247', '293', '297', '207', '326',
+                  '308', '298', '8022', '324', '342', '301', '294', '312', '210', '257', '788', '750', '252', '253',
+                  '749', '8021', '315', '262', '311', '319', '208', '233', '238', '231', '237', '322', '286', '296',
+                  '325', '303', '225', '223', '784', '305', '255', '295', '314', '263', '282', '250', '316', '331',
+                  '4561', '8024', '226', '284', '269', '235', '266', '278', '220', '291', '265', '307']
 
     metric = "f1_macro"
     processor = TextClassificationProcessor(tokenizer=tokenizer,
@@ -94,12 +85,13 @@ def doc_classification_multilabel():
         device=device,
         n_batches=len(data_silo.loaders["train"]),
         n_epochs=n_epochs)
-    save_dir = Path("/home/graphn/PycharmProjects/media_markt_saturn_case_study_aurelien_levecq/research_and_development/trained_model/category_multi_class_multi_label_name_description")
+    save_dir = Path(
+        "/home/graphn/PycharmProjects/media_markt_saturn_case_study_aurelien_levecq/research_and_development/trained_model/category_multi_class_multi_label_name_description")
 
     earlystopping = EarlyStopping(
         metric="f1_macro", mode="max",
         save_dir=save_dir,  # where to save the best model
-        patience=round(n_epochs*0.6)  # number of evaluations to wait for improvement before terminating the training
+        patience=round(n_epochs * 0.6)  # number of evaluations to wait for improvement before terminating the training
     )
 
     # 6. Feed everything to the Trainer, which keeps care of growing our model into powerful plant and evaluates it from time to time
@@ -117,7 +109,6 @@ def doc_classification_multilabel():
 
     # 7. Let it grow
     trainer.train()
-
 
     # 9. Load it & harvest your fruits (Inference)
     basic_texts = [
