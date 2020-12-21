@@ -1,13 +1,13 @@
 class Product:
     def __init__(self, name: str, categories: list, online_status: str, long_description: str, long_description_mm: str,
                  marketing_text_mm: str, short_description: str, short_description_mm: str, categories_predicted: list):
-        self.name: str = self.convert_nan_to_empty_string(name)
-        self.online_status: str = self.convert_nan_to_empty_string(online_status)
-        self.long_description: str = self.convert_nan_to_empty_string(long_description)
-        self.long_description_mm: str = self.convert_nan_to_empty_string(long_description_mm)
-        self.marketing_text_mm: str = self.convert_nan_to_empty_string(marketing_text_mm)
-        self.short_description: str = self.convert_nan_to_empty_string(short_description)
-        self.short_description_mm: str = self.convert_nan_to_empty_string(short_description_mm)
+        self.name: str = self.product_string_cleansing(name)
+        self.online_status: str = self.product_string_cleansing(online_status)
+        self.long_description: str = self.product_string_cleansing(long_description)
+        self.long_description_mm: str = self.product_string_cleansing(long_description_mm)
+        self.marketing_text_mm: str = self.product_string_cleansing(marketing_text_mm)
+        self.short_description: str = self.product_string_cleansing(short_description)
+        self.short_description_mm: str = self.product_string_cleansing(short_description_mm)
 
         self.categories: list = categories
         self.categories_predicted = categories_predicted
@@ -112,7 +112,7 @@ class Product:
                         '202', '4036', '4036', '4036', '4036', '4036', '4036']
 
     @staticmethod
-    def convert_nan_to_empty_string(input_to_check):
+    def product_string_cleansing(input_to_check):
         if type(input_to_check) == float:
             return "NO_TEXT"
         to_delete = ["<body>", "</body>", "<header>", "</header>"]
